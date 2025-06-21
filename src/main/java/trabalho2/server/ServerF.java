@@ -12,9 +12,9 @@ public class ServerF {
 
             // 2) Instancia e registra nosso ServicoRMIImpl
             ServicoRMIImpl servico = new ServicoRMIImpl();
-            Naming.rebind("rmi://localhost/ServicoRMI", servico);
+            Naming.rebind("rmi://localhost:1099/ClinicaService", servico);
 
-            System.out.println("Servidor RMI  pronto em rmi://localhost/ServicoRMI");
+            System.out.println("Servidor RMI  pronto em rmi://localhost:1099/ClinicaService");
         } catch (Exception e) {
             System.err.println("Falha ao iniciar servidor RMI:");
             e.printStackTrace();
