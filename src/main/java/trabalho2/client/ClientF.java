@@ -32,8 +32,6 @@ public class ClientF {
             System.out.println("2) Listar Médicos");
             System.out.println("3) Adicionar Paciente");
             System.out.println("4) Listar Pacientes");
-            System.out.println("5) Agendar Consulta");
-            System.out.println("6) Listar Consultas");
             System.out.println("0) Sair");
             System.out.print("Escolha: ");
             int opc = Integer.parseInt(sc.nextLine());
@@ -107,32 +105,6 @@ public class ClientF {
                     List<Paciente> listaP = mapper.readValue(allJson, new TypeReference<List<Paciente>>(){});
                     System.out.println("=== Pacientes Cadastrados ===");
                     listaP.forEach(System.out::println);
-                }
-
-                case 5 -> {
-                    // --- agendar consulta ---
-                    System.out.print("CRM do Médico: ");       String crmMed = sc.nextLine();
-                    System.out.print("ID do Paciente: ");      String idPac  = sc.nextLine();
-                    System.out.print("Data e Hora (yyyy-MM-ddTHH:mm): ");
-                    LocalDateTime dt = LocalDateTime.parse(sc.nextLine());
-
-                    Medico refM = new Medico(); refM.setCrm(crmMed);
-                    Paciente refP = new Paciente(); refP.setIdPaciente(idPac);
-                    Consulta c = new Consulta(refM, refP, dt);
-
-                    String json = mapper.writeValueAsString(c);
-                    byte[] resp = stub.doOperation("Consulta", "agendarConsultaJson", serializeString(json));
-                    System.out.println("--> Servidor: " + deserializeString(resp));
-                }
-
-                case 6 -> {
-                    // --- listar consultas ---
-                    byte[] resp = stub.doOperation("Consulta", "listarConsultasJson", new byte[0]);
-                    String allJson = deserializeString(resp);
-                    System.out.println("JSON retornado: " + allJson);
-                    List<Consulta> listaC = mapper.readValue(allJson, new TypeReference<List<Consulta>>(){});
-                    System.out.println("=== Consultas Agendadas ===");
-                    listaC.forEach(System.out::println);
                 }
 
                 case 0 -> {

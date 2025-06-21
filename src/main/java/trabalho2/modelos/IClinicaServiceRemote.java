@@ -25,10 +25,4 @@ public interface IClinicaServiceRemote extends Remote {
     void adicionarPacienteJson(String pacienteJson) throws RemoteException;
     String listarPacientesJson() throws RemoteException;
 
-    // Consultas
-    void agendarConsulta(Consulta consulta) throws RemoteException;
-    List<Consulta> listarConsultas() throws RemoteException;
-    // JSON
-    void agendarConsultaJson(String consultaJson) throws RemoteException;
-    String listarConsultasJson() throws RemoteException;
 }

@@ -95,36 +95,4 @@ public class ClinicaServiceImpl extends UnicastRemoteObject implements IClinicaS
             throw new RemoteException("JSON write error", e);
         }
     }
-
-    // JSON Consultas
-    @Override
-    public void agendarConsulta(Consulta c) throws RemoteException {
-        delegate.agendarConsulta(c);
-    }
-
-    @Override
-    public List<Consulta> listarConsultas() throws RemoteException {
-        return delegate.listarConsultas();
-    }
-
-    @Override
-    public void agendarConsultaJson(String consultaJson) throws RemoteException {
-        try {
-            Consulta c = objectMapper.readValue(consultaJson, Consulta.class);
-            delegate.agendarConsulta(c);
-        } catch (JsonProcessingException e) {
-            throw new RemoteException("JSON parse error", e);
-        }
-    }
-
-    @Override
-    public String listarConsultasJson() throws RemoteException {
-        try {
-            return objectMapper.writeValueAsString(delegate.listarConsultas());
-        } catch (JsonProcessingException e) {
-            throw new RemoteException("JSON write error", e);
-        }
-    }
-
-
 }

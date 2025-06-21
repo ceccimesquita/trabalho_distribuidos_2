@@ -72,18 +72,6 @@ public class ServicoRMIImpl extends UnicastRemoteObject implements ServicoRMI {
                     }
                     break;
 
-                case "Consulta":
-                    if (methodId.equals("agendarConsultaJson")) {
-                        String consJson = (String) ois.readObject();
-                        clinica.agendarConsultaJson(consJson);
-                        oos.writeObject("OK");
-                    } else if (methodId.equals("listarConsultasJson")) {
-                        String lista = clinica.listarConsultasJson();
-                        oos.writeObject(lista);
-                    } else {
-                        oos.writeObject("Método desconhecido em Consulta");
-                    }
-                    break;
 
                 default:
                     oos.writeObject("Serviço inválido: " + objectReference);
