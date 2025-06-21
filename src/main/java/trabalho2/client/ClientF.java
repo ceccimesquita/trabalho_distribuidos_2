@@ -41,7 +41,7 @@ public class ClientF {
             switch (opc) {
                 case 1 -> {
                     // --- adicionar médico ---
-                    System.out.print("Tipo [1=Medico 2=Pediatra 3=Ortopedista 4=Psiquiatra]: ");
+                    System.out.print("Tipo [1=Pediatra 2=Ortopedista 3=Psiquiatra]: ");
                     int tipo = Integer.parseInt(sc.nextLine());
                     System.out.print("Nome: ");    String nome = sc.nextLine();
                     System.out.print("CRM: ");     String crm  = sc.nextLine();
@@ -49,14 +49,14 @@ public class ClientF {
 
                     Medico m;
                     switch (tipo) {
-                        case 2 -> {
+                        case 1 -> {
                             System.out.print("Faixa Etária: ");
                             String faixa = sc.nextLine();
                             System.out.print("Especialização Neonatal (true/false): ");
                             boolean neonatal = Boolean.parseBoolean(sc.nextLine());
                             m = new Pediatra(nome, crm, cont, faixa, neonatal);
                         }
-                        case 3 -> {
+                        case 2 -> {
                             System.out.print("Área Especializada: ");
                             String area = sc.nextLine();
                             System.out.print("Realiza Cirurgia (true/false): ");
