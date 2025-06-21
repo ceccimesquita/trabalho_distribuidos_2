@@ -125,4 +125,6 @@ public class ClinicaServiceImpl extends UnicastRemoteObject implements IClinicaS
             throw new RemoteException("JSON write error", e);
         }
     }
+
+
 }
